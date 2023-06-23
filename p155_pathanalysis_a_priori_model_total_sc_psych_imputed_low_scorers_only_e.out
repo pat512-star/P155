@@ -1,0 +1,837 @@
+Mplus VERSION 8.8
+MUTHEN & MUTHEN
+01/20/2023   8:37 PM
+
+INPUT INSTRUCTIONS
+
+  Title:
+    Stata2Mplus conversion for _1_imp_psych.dta.dta
+    List of variables converted shown below
+
+    id : STUDY_ID
+    casc_rtp : CASC score relative to the passmark at first sitting
+    written :
+    sjt :
+    cps :
+    sc : old, faulty SC scores
+    casc_raw : raw total score for CASC
+    casc_pass : CASC pass at first attempt?
+    oriel_data_year : ORIEL_DATA_YEAR
+    clin_sc : Clinical Scenario Score for SC
+    port_sc : Portfolio station score for SC
+    pmq :
+    a_tarif :
+    sec_int :
+    wp_index :
+    fp_sjt : Foundation Programme SJT score at first attempt
+    epm : EPM score at first attempt
+    msra_src_a1 :
+      1: MSRA Jan 2021 Final Scores (Round 1).xlsx
+      2: MSRA Sept 2021 Final Scores (Round 2).xlsx
+      3: MSRA_R1R_COVID_2020_CPT
+      4: MSRA_R1R_COVID_2020_CPT;MSRA_R1R_COVID_2020_GP
+      5: MSRA_R1R_COVID_2020_GP
+      6: MSRA_R1_APR_2018
+      7: MSRA_R1_APR_2019
+      8: MSRA_R1_JAN_2018_STG
+      9: MSRA_R1_JAN_2019
+      10: MSRA_R1_JAN_2020
+      11: MSRA_R2R_SEPT_2020
+      12: MSRA_R2_SEPT_2018
+      13: MSRA_R2_SEP_2019
+      14: SRA_ROUND_2_2017
+      15: SRA_STG_2015_R1
+      16: SRA_STG_2015_R1R
+      17: SRA_STG_2015_R2GP
+      18: SRA_STG_2016_R1
+      19: SRA_STG_2016_R1R
+      20: SRA_STG_2016_R2
+      21: SRA_STG_2017_R1
+      22: SRA_STG_2017_R1R
+    oriel_interview_score :
+    arcp_max :
+    male :
+    bme : self reported BME ethnicity
+    lowses :
+    plab1_l : plab1 score RTP on most recent attempt
+    plab2_l : plab2 score RTP on most recent attempt
+    plab1_1st : plab1 score RTP on first attempt
+    plab2_1st : plab2 score RTP on first attempt
+    age_casc : age of first attempt at CASC
+    msra_year_last :
+    appoint :
+    msra :
+    sc_orig :
+    diet :
+      1: MSRA Jan 2021 Final Scores (Round 1).xlsx
+      2: MSRA Sept 2021 Final Scores (Round 2).xlsx
+      3: MSRA_R1R_COVID_2020_CPT
+      4: MSRA_R1R_COVID_2020_CPT;MSRA_R1R_COVID_2020_GP
+      5: MSRA_R1R_COVID_2020_GP
+      6: MSRA_R1_APR_2018
+      7: MSRA_R1_APR_2019
+      8: MSRA_R1_JAN_2018_STG
+      9: MSRA_R1_JAN_2019
+      10: MSRA_R1_JAN_2020
+      11: MSRA_R2R_SEPT_2020
+      12: MSRA_R2_SEPT_2018
+      13: MSRA_R2_SEP_2019
+      14: SRA_ROUND_2_2017
+      15: SRA_STG_2015_R1
+      16: SRA_STG_2015_R1R
+      17: SRA_STG_2015_R2GP
+      18: SRA_STG_2016_R1
+      19: SRA_STG_2016_R1R
+      20: SRA_STG_2016_R2
+      21: SRA_STG_2017_R1
+      22: SRA_STG_2017_R1R
+    z_casc :
+    tot_sc : Non-imputed SC total score Clin + port- see also tot_sc_i for passively imputed
+    msra_i :
+    tot_sc_i :
+    pmq_i :
+
+    Data:
+       TYPE = IMPUTATION;
+     FILE IS "C:\P155_psych\work\data\derived\imp_psych\imp_psych.dat" ;
+  Variable:
+    Names are
+       id casc_rtp written sjt cps sc casc_raw casc_pass oriel_data_year
+       clin_sc port_sc pmq a_tarif sec_int wp_index fp_sjt epm oriel_interview_score
+       arcp_max male bme lowses plab1_l plab2_l plab1_1st plab2_1st age_casc
+       msra_year_last appoint msra sc_orig diet z_casc tot_sc msra_i tot_sc_i
+       pmq_i msra_src_a1;
+       usevariables are id casc_rtp written sjt cps tot_sc_i ;
+       idvariable are id;
+    Missing are all (-9999) ;
+    USEOBSERVATIONS ARE msra_i<484;
+
+    Analysis:
+    estimator= MLR;
+
+    MODEL:
+    casc_rtp ON sjt;
+    casc_rtp ON tot_sc_i;
+    casc_rtp ON written ;
+    written ON cps;
+   tot_sc_i ON cps;
+   tot_sc_i ON sjt;
+
+  MODEL INDIRECT:
+  casc_rtp via tot_sc_i sjt;
+  casc_rtp via written cps;
+
+    OUTPUT:
+    stdyx;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+Stata2Mplus conversion for _1_imp_psych.dta.dta
+List of variables converted shown below
+
+id : STUDY_ID
+casc_rtp : CASC score relative to the passmark at first sitting
+written :
+sjt :
+cps :
+sc : old, faulty SC scores
+casc_raw : raw total score for CASC
+casc_pass : CASC pass at first attempt?
+oriel_data_year : ORIEL_DATA_YEAR
+clin_sc : Clinical Scenario Score for SC
+port_sc : Portfolio station score for SC
+pmq :
+a_tarif :
+sec_int :
+wp_index :
+fp_sjt : Foundation Programme SJT score at first attempt
+epm : EPM score at first attempt
+msra_src_a1 :
+1: MSRA Jan 2021 Final Scores (Round 1).xlsx
+2: MSRA Sept 2021 Final Scores (Round 2).xlsx
+3: MSRA_R1R_COVID_2020_CPT
+4: MSRA_R1R_COVID_2020_CPT;MSRA_R1R_COVID_2020_GP
+5: MSRA_R1R_COVID_2020_GP
+6: MSRA_R1_APR_2018
+7: MSRA_R1_APR_2019
+8: MSRA_R1_JAN_2018_STG
+9: MSRA_R1_JAN_2019
+10: MSRA_R1_JAN_2020
+11: MSRA_R2R_SEPT_2020
+12: MSRA_R2_SEPT_2018
+13: MSRA_R2_SEP_2019
+14: SRA_ROUND_2_2017
+15: SRA_STG_2015_R1
+16: SRA_STG_2015_R1R
+17: SRA_STG_2015_R2GP
+18: SRA_STG_2016_R1
+19: SRA_STG_2016_R1R
+20: SRA_STG_2016_R2
+21: SRA_STG_2017_R1
+22: SRA_STG_2017_R1R
+oriel_interview_score :
+arcp_max :
+male :
+bme : self reported BME ethnicity
+lowses :
+plab1_l : plab1 score RTP on most recent attempt
+plab2_l : plab2 score RTP on most recent attempt
+plab1_1st : plab1 score RTP on first attempt
+plab2_1st : plab2 score RTP on first attempt
+age_casc : age of first attempt at CASC
+msra_year_last :
+appoint :
+msra :
+sc_orig :
+diet :
+1: MSRA Jan 2021 Final Scores (Round 1).xlsx
+2: MSRA Sept 2021 Final Scores (Round 2).xlsx
+3: MSRA_R1R_COVID_2020_CPT
+4: MSRA_R1R_COVID_2020_CPT;MSRA_R1R_COVID_2020_GP
+5: MSRA_R1R_COVID_2020_GP
+6: MSRA_R1_APR_2018
+7: MSRA_R1_APR_2019
+8: MSRA_R1_JAN_2018_STG
+9: MSRA_R1_JAN_2019
+10: MSRA_R1_JAN_2020
+11: MSRA_R2R_SEPT_2020
+12: MSRA_R2_SEPT_2018
+13: MSRA_R2_SEP_2019
+14: SRA_ROUND_2_2017
+15: SRA_STG_2015_R1
+16: SRA_STG_2015_R1R
+17: SRA_STG_2015_R2GP
+18: SRA_STG_2016_R1
+19: SRA_STG_2016_R1R
+20: SRA_STG_2016_R2
+21: SRA_STG_2017_R1
+22: SRA_STG_2017_R1R
+z_casc :
+tot_sc : Non-imputed SC total score Clin + port- see also tot_sc_i for passively imputed
+msra_i :
+tot_sc_i :
+pmq_i :
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Average number of observations                                1317
+
+Number of replications
+    Requested                                                   10
+    Completed                                                   10
+
+Number of dependent variables                                    3
+Number of independent variables                                  2
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   CASC_RTP    WRITTEN     TOT_SC_I
+
+Observed independent variables
+   SJT         CPS
+
+Variables with special functions
+
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Multiple data files from
+    C:\P155_psych\work\data\derived\imp_psych\imp_psych.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA FOR THE FIRST DATA SET
+
+     Number of missing data patterns             1
+
+
+SUMMARY OF MISSING DATA PATTERNS FOR THE FIRST DATA SET
+
+
+     MISSING DATA PATTERNS (x = not missing)
+
+           1
+ CASC_RTP  x
+ WRITTEN   x
+ TOT_SC_I  x
+ SJT       x
+ CPS       x
+
+
+     MISSING DATA PATTERN FREQUENCIES
+
+    Pattern   Frequency
+          1        1317
+
+
+COVARIANCE COVERAGE OF DATA FOR THE FIRST DATA SET
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP       1.000
+ WRITTEN        1.000         1.000
+ TOT_SC_I       1.000         1.000         1.000
+ SJT            1.000         1.000         1.000         1.000
+ CPS            1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+NOTE:  These are average results over 10 data sets.
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+                3.930        58.181        36.783       215.437       210.834
+
+
+           Covariances
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP      50.478
+ WRITTEN       22.662       121.780
+ TOT_SC_I      33.905        10.997       120.851
+ SJT           69.107        39.087        64.456       907.421
+ CPS           25.889       133.468       -11.299        22.131       992.806
+
+
+           Correlations
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP       1.000
+ WRITTEN        0.289         1.000
+ TOT_SC_I       0.434         0.091         1.000
+ SJT            0.323         0.118         0.195         1.000
+ CPS            0.116         0.384        -0.033         0.023         1.000
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       12
+
+Loglikelihood
+
+    H0 Value
+
+        Mean                            -14137.408
+        Std Dev                             40.944
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       -14232.656     -14211.973
+           0.980       1.000       -14221.495     -14211.973
+           0.950       0.800       -14204.757     -14211.973
+           0.900       0.800       -14189.882     -14211.973
+           0.800       0.800       -14171.866     -14211.973
+           0.700       0.800       -14158.879     -14155.993
+           0.500       0.700       -14137.408     -14132.844
+           0.300       0.300       -14115.936     -14119.748
+           0.200       0.200       -14102.949     -14114.379
+           0.100       0.100       -14084.933     -14091.805
+           0.050       0.000       -14070.058     -14091.805
+           0.020       0.000       -14053.320     -14091.805
+           0.010       0.000       -14042.159     -14091.805
+
+    H1 Value
+
+        Mean                            -14119.985
+        Std Dev                             42.556
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       -14218.983     -14195.060
+           0.980       1.000       -14207.382     -14195.060
+           0.950       0.900       -14189.985     -14195.060
+           0.900       0.800       -14174.525     -14195.060
+           0.800       0.800       -14155.800     -14195.060
+           0.700       0.800       -14142.301     -14139.445
+           0.500       0.600       -14119.985     -14118.536
+           0.300       0.300       -14097.668     -14103.058
+           0.200       0.200       -14084.169     -14096.723
+           0.100       0.100       -14065.444     -14074.821
+           0.050       0.000       -14049.984     -14074.821
+           0.020       0.000       -14032.587     -14074.821
+           0.010       0.000       -14020.986     -14074.821
+
+Information Criteria
+
+    Akaike (AIC)
+
+        Mean                             28298.815
+        Std Dev                             81.888
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000        28108.318      28188.910
+           0.980       1.000        28130.641      28188.910
+           0.950       1.000        28164.117      28188.910
+           0.900       0.900        28193.867      28188.910
+           0.800       0.800        28229.898      28188.910
+           0.700       0.700        28255.873      28252.758
+           0.500       0.300        28298.815      28269.712
+           0.300       0.200        28341.757      28296.363
+           0.200       0.200        28367.732      28335.987
+           0.100       0.200        28403.763      28435.681
+           0.050       0.200        28433.513      28435.681
+           0.020       0.000        28466.989      28435.681
+           0.010       0.000        28489.312      28435.681
+
+    Bayesian (BIC)
+
+        Mean                             28361.012
+        Std Dev                             81.888
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000        28170.516      28251.107
+           0.980       1.000        28192.838      28251.107
+           0.950       1.000        28226.314      28251.107
+           0.900       0.900        28256.064      28251.107
+           0.800       0.800        28292.095      28251.107
+           0.700       0.700        28318.070      28314.955
+           0.500       0.300        28361.012      28331.909
+           0.300       0.200        28403.955      28358.560
+           0.200       0.200        28429.930      28398.184
+           0.100       0.200        28465.961      28497.879
+           0.050       0.200        28495.711      28497.879
+           0.020       0.000        28529.186      28497.879
+           0.010       0.000        28551.509      28497.879
+
+    Sample-Size Adjusted BIC (n* = (n + 2) / 24)
+
+        Mean                             28322.894
+        Std Dev                             81.888
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000        28132.397      28212.989
+           0.980       1.000        28154.720      28212.989
+           0.950       1.000        28188.196      28212.989
+           0.900       0.900        28217.946      28212.989
+           0.800       0.800        28253.977      28212.989
+           0.700       0.700        28279.952      28276.837
+           0.500       0.300        28322.894      28293.791
+           0.300       0.200        28365.836      28320.442
+           0.200       0.200        28391.811      28360.066
+           0.100       0.200        28427.842      28459.760
+           0.050       0.200        28457.592      28459.760
+           0.020       0.000        28491.068      28459.760
+           0.010       0.000        28513.391      28459.760
+
+Chi-Square Test of Model Fit
+
+        Degrees of freedom                       3
+
+        Mean                                35.373
+        Std Dev                             10.927
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000            0.115         20.282
+           0.980       1.000            0.185         20.282
+           0.950       1.000            0.352         20.282
+           0.900       1.000            0.584         20.282
+           0.800       1.000            1.005         20.282
+           0.700       1.000            1.424         25.005
+           0.500       1.000            2.366         34.521
+           0.300       1.000            3.665         36.097
+           0.200       1.000            4.642         41.507
+           0.100       1.000            6.251         47.113
+           0.050       1.000            7.815         47.113
+           0.020       1.000            9.837         47.113
+           0.010       1.000           11.345         47.113
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+        Mean                                 0.089
+        Std Dev                              0.015
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       0.800
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+CFI/TLI
+
+    CFI
+
+        Mean                                 0.955
+        Std Dev                              0.015
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       0.300
+           0.900       0.000
+           0.800       0.000
+           0.700       0.000
+           0.500       0.000
+           0.300       0.000
+           0.200       0.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+    TLI
+
+        Mean                                 0.866
+        Std Dev                              0.044
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       0.800
+           0.800       0.100
+           0.700       0.000
+           0.500       0.000
+           0.300       0.000
+           0.200       0.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+SRMR (Standardized Root Mean Square Residual)
+
+        Mean                                 0.045
+        Std Dev                              0.007
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       1.000
+           0.050       0.800
+           0.020       0.000
+           0.010       0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+ CASC_RTP ON
+    SJT                0.053      0.011      4.904      0.000      0.756
+    TOT_SC_I           0.239      0.028      8.566      0.000      0.716
+    WRITTEN            0.148      0.023      6.362      0.000      0.602
+
+ WRITTEN  ON
+    CPS                0.134      0.014      9.728      0.000      0.556
+
+ TOT_SC_I ON
+    CPS               -0.013      0.010     -1.244      0.214      0.132
+    SJT                0.071      0.012      6.134      0.000      0.134
+
+ Intercepts
+    CASC_RTP         -24.820      2.799     -8.868      0.000      0.766
+    WRITTEN           29.838      2.890     10.326      0.000      0.526
+    TOT_SC_I          24.146      3.353      7.200      0.000      0.170
+
+ Residual Variances
+    CASC_RTP          35.232      2.198     16.028      0.000      0.712
+    WRITTEN          103.755      5.371     19.319      0.000      0.489
+    TOT_SC_I         116.082      9.222     12.588      0.000      0.490
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Average Condition Number for the Information Matrix      0.779E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+ CASC_RTP ON
+    SJT                0.227      0.042      5.391      0.000      0.700
+    TOT_SC_I           0.374      0.038      9.813      0.000      0.696
+    WRITTEN            0.233      0.039      5.945      0.000      0.660
+
+ WRITTEN  ON
+    CPS                0.384      0.034     11.352      0.000      0.458
+
+ TOT_SC_I ON
+    CPS               -0.037      0.030     -1.249      0.212      0.127
+    SJT                0.196      0.031      6.414      0.000      0.163
+
+ Intercepts
+    CASC_RTP          -3.542      0.318    -11.131      0.000      0.690
+    WRITTEN            2.708      0.316      8.574      0.000      0.572
+    TOT_SC_I           2.199      0.338      6.507      0.000      0.191
+
+ Residual Variances
+    CASC_RTP           0.720      0.036     19.860      0.000      0.733
+    WRITTEN            0.852      0.026     32.729      0.000      0.462
+    TOT_SC_I           0.960      0.012     80.184      0.000      0.146
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed   Rate of
+    Variable        Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+    CASC_RTP           0.280      0.036      7.738      0.000      0.733
+    WRITTEN            0.148      0.026      5.668      0.000      0.462
+    TOT_SC_I           0.040      0.012      3.300      0.001      0.146
+
+
+TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+Effects from SJT to CASC_RTP via TOT_SC_I
+
+  Sum of indirect      0.017      0.003      5.342      0.000      0.319
+
+  Specific indirect 1
+    CASC_RTP
+    TOT_SC_I
+    SJT                0.017      0.003      5.342      0.000      0.319
+
+
+Effects from CPS to CASC_RTP via WRITTEN
+
+  Sum of indirect      0.020      0.004      5.316      0.000      0.570
+
+  Specific indirect 1
+    CASC_RTP
+    WRITTEN
+    CPS                0.020      0.004      5.316      0.000      0.570
+
+
+
+STANDARDIZED TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+Effects from SJT to CASC_RTP via TOT_SC_I
+
+  Sum of indirect      0.073      0.013      5.757      0.000      0.227
+
+  Specific indirect 1
+    CASC_RTP
+    TOT_SC_I
+    SJT                0.073      0.013      5.757      0.000      0.227
+
+
+Effects from CPS to CASC_RTP via WRITTEN
+
+  Sum of indirect      0.089      0.017      5.203      0.000      0.593
+
+  Specific indirect 1
+    CASC_RTP
+    WRITTEN
+    CPS                0.089      0.017      5.203      0.000      0.593
+
+
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           LAMBDA
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP           0             0             0             0             0
+ WRITTEN            0             0             0             0             0
+ TOT_SC_I           0             0             0             0             0
+ SJT                0             0             0             0             0
+ CPS                0             0             0             0             0
+
+
+           THETA
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP           0
+ WRITTEN            0             0
+ TOT_SC_I           0             0             0
+ SJT                0             0             0             0
+ CPS                0             0             0             0             0
+
+
+           ALPHA
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+                  1             2             3             0             0
+
+
+           BETA
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP           0             4             5             6             0
+ WRITTEN            0             0             0             0             7
+ TOT_SC_I           0             0             0             8             9
+ SJT                0             0             0             0             0
+ CPS                0             0             0             0             0
+
+
+           PSI
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP          10
+ WRITTEN            0            11
+ TOT_SC_I           0             0            12
+ SJT                0             0             0             0
+ CPS                0             0             0             0             0
+
+
+     STARTING VALUES
+
+
+           NU
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP       1.000         0.000         0.000         0.000         0.000
+ WRITTEN        0.000         1.000         0.000         0.000         0.000
+ TOT_SC_I       0.000         0.000         1.000         0.000         0.000
+ SJT            0.000         0.000         0.000         1.000         0.000
+ CPS            0.000         0.000         0.000         0.000         1.000
+
+
+           THETA
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP       0.000
+ WRITTEN        0.000         0.000
+ TOT_SC_I       0.000         0.000         0.000
+ SJT            0.000         0.000         0.000         0.000
+ CPS            0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+                3.714        58.232        36.476       215.437       210.834
+
+
+           BETA
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP       0.000         0.000         0.000         0.000         0.000
+ WRITTEN        0.000         0.000         0.000         0.000         0.000
+ TOT_SC_I       0.000         0.000         0.000         0.000         0.000
+ SJT            0.000         0.000         0.000         0.000         0.000
+ CPS            0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              CASC_RTP      WRITTEN       TOT_SC_I      SJT           CPS
+              ________      ________      ________      ________      ________
+ CASC_RTP      27.539
+ WRITTEN        0.000        60.835
+ TOT_SC_I       0.000         0.000        59.913
+ SJT            0.000         0.000         0.000       907.421
+ CPS            0.000         0.000         0.000        22.131       992.806
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\p155_psych\work\data\derived\p155_pathanalysis_a_priori_model_total_sc_psych_imputed_low_scorers_only_e.dgm
+
+     Beginning Time:  20:37:40
+        Ending Time:  20:37:42
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2022 Muthen & Muthen
